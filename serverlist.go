@@ -42,6 +42,17 @@ func main() {
 	cfg := &constants.Config{}
 	helpers.GetConfig("config", cfg)
 
+	helpers.Connect(cfg.MySQL)
+
+	if helpers.DB == nil {
+		logger.Error("Cannot connect to MySQL! Please check your Config file.")
+		return
+	}
+	if helpers.DB.Ping() != nil {
+		logger.Error("Cannot connect to MySQL! Please check your Config file.")
+		return
+	}
+
 	os.Setenv("DEBUG", strconv.FormatBool(cfg.Server.Debug))
 
 	server.StartServer(cfg.Server.Host, cfg.Server.Port)
