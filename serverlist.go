@@ -1,11 +1,11 @@
 package main
 
-import (
-    "fmt"
-    "log"
-    "net/http"
-)
+import "github.com/MarcPlaying/go-serverlist/server"
+
+func init() {
+
+}
 
 func main() {
-  
+	server.StartServer("", 8745)
 }
