@@ -10,7 +10,7 @@ import (
 )
 
 // StartServer to start the HTTP Server.
-func StartServer(host string, port int) {
+func StartServer(host string, port int16) {
 	r := mux.NewRouter()
 
 	logger.Info(" Serverlist is listening on port %v", port)

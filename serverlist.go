@@ -2,6 +2,7 @@ package main
 
 import (
 	"os"
+	"strconv"
 
 	"github.com/Gigamons/common/consts"
 	"github.com/Gigamons/common/helpers"
@@ -38,5 +39,10 @@ func init() {
 }
 
 func main() {
-	server.StartServer("", 8745)
+	cfg := &constants.Config{}
+	helpers.GetConfig("config", cfg)
+
+	os.Setenv("DEBUG", strconv.FormatBool(cfg.Server.Debug))
+
+	server.StartServer(cfg.Server.Host, cfg.Server.Port)
 }
