@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"runtime/debug"
+	"text/template"
 
 	"github.com/Gigamons/common/logger"
 	"github.com/gorilla/mux"
@@ -32,4 +33,12 @@ func StartServer(host string, port int16) {
 
 	logger.Info(" Serverlist is listening on port %v", port)
 	log.Fatal(http.ListenAndServe(fmt.Sprintf("%s:%v", host, port), r))
+}
+
+func render(w http.ResponseWriter, file string) {
+	tmpl, err := template.ParseFiles("templates/" + file)
+	if err != nil {
+		panic(err)
+	}
+	tmpl.Execute(w, tmpl)
 }
