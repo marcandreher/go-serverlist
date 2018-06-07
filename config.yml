@@ -1,0 +1,14 @@
+server:
+  host: ""
+  port: 8745
+  debug: false
+mysql:
+  hostname: 0.0.0.0
+  port: 3306
+  username: root
+  password: ""
+  database: serverlist
+redis:
+  host: 127.0.0.1
+  port: 6379
+  password: ""
